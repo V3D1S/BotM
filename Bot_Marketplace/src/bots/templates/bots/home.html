@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotM</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        
+        .container{
+            width: 90%;
+            height: 100%;
+            
+            
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            height: 10%;
+            background-color: white;
+            font-size: 20px;
+            border-bottom: 3px solid greenyellow;
+            
+          
+        }
+
+        .logo {
+            margin-left: 5%;
+            margin-top: 50%;
+            float:left;
+            
+        }
+
+        .navbar_options {
+            width: 20%;
+            text-align: right;
+            float: right;
+            margin-right: 5%;
+
+            
+
+            
+        }
+        .navbar_options ul{
+            list-style-type: none;
+            margin: 0;
+            
+            
+        }
+        .navbar_options ul li {
+            margin-left: 10%;
+            margin-right: 0%;
+            display: inline-block;
+            text-decoration: none;
+            padding-right: 5px;
+            padding: 10px 10px 10px 10px;
+            
+        }
+
+        .navbar_options ul li:hover {
+            background-color: rgb(228, 228, 228);
+            
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h3 style="margin: 0%;">BotM</h3>
+            </div>
+            <div class="navbar_options">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Bots</a></li>
+                    {% if request.user.username %}
+                        <li><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>
+                    {% else %}
+                        <li><a  href="{% url 'sign_in' %}">Sing in</a></li>
+                        <li><a  href="{% url 'sign_up' %}">Sing up</a></li>
+                    {% endif %}
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
