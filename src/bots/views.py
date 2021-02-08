@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
 
@@ -36,4 +36,19 @@ def sign_in(request):
 
 
 def sign_up(request):
-	return render(request, 'bots/sign_up.html')
+	if request.method == "POST":
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			user = authenticate(username=username, password=password)
+			do_login(request, user)
+			return redirect('/')
+	else: 
+		form = UserCreationForm()
+
+
+
+
+	return render(request, 'bots/sign_up.html', {'form': form})
