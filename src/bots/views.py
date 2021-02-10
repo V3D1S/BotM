@@ -36,16 +36,20 @@ def sign_in(request):
 
 
 def sign_up(request):
+	form = UserCreationForm()
 	if request.method == "POST":
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
+			password = form.cleaned_data['password1']
 			user = authenticate(username=username, password=password)
 			do_login(request, user)
 			return redirect('/')
+<<<<<<< HEAD
 	else: 
 		form = UserCreationForm()
 
+=======
+>>>>>>> b5a0512ddac5c31b1681d1ba7f36ad2e92b6e7a2
 	return render(request, 'bots/sign_up.html', {'form': form})
