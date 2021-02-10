@@ -6,12 +6,12 @@ from django.contrib.auth import logout as do_logout
 
 # Create your views here.
 def homeView(request):
-	return render(request, 'bots/home.html')
+	return render(request, 'bots/index.html')
     
 
 def logout(request):
 	do_logout(request)
-	return render(request, 'bots/home.html')
+	return render(request, 'bots/index.html')
 	
 
 
@@ -47,8 +47,5 @@ def sign_up(request):
 			return redirect('/')
 	else: 
 		form = UserCreationForm()
-
-
-
 
 	return render(request, 'bots/sign_up.html', {'form': form})

@@ -1,7 +1,8 @@
-
+{% extends 'bots/index.html' %}
+{% block content %}
 <form method="POST" action="">
-
 	{{form.as_p}}
 	{% csrf_token %}
 	<input type="submit">
 </form>
+{% endblock %}
