@@ -46,10 +46,7 @@ def sign_up(request):
 			user = authenticate(username=username, password=password)
 			do_login(request, user)
 			return redirect('/')
-<<<<<<< HEAD
 	else: 
 		form = UserCreationForm()
 
-=======
->>>>>>> b5a0512ddac5c31b1681d1ba7f36ad2e92b6e7a2
 	return render(request, 'bots/sign_up.html', {'form': form})
