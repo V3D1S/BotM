@@ -12,6 +12,9 @@
         }
         
         .container{
+            position: absolute;
+            top: 10%;
+            left: 5%;
             width: 90%;
             height: 100%;
             text-align: center;
@@ -79,6 +82,8 @@
         }
         
 
+        .content {
+        }
         
     </style>
 </head>
@@ -90,7 +95,7 @@
             </div>
             <div class="navbar_options">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="#">Bots</a></li>
                     {% if request.user.username %}
                         <li><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>
