@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotM</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .site-header {
+            display: inline-block;
+            width: 100%;
+            height: 5%;
+            border-bottom: 2px solid rgb(162, 221, 162);
+        }
+
+        .logo {
+            text-align: center;
+            height: 100%;
+            margin-top: 0;
+            margin-left: 5%;
+            float: left;
+            vertical-align: middle;
+    
+        }
+        .logo h2 {
+            margin-top: 25%;
+            margin-bottom: 25%;
+            
+        }
+
+        .logo h2 a {
+            text-decoration: none; 
+            color: rgb(29, 22, 22);
+        }
+
+
+        .header_navbar {
+            vertical-align: middle;
+            margin-top: 0;
+            float: right;
+            width: 40%;
+            margin-right: 5%;
+            margin-left: 0;
+        }
+
+        .navbar {
+            height: 100%;
+        }
+
+        .navbar ul{
+            width: 100%;
+            text-align: right;
+            padding: 0;
+    
+    
+        }
+
+        .navbar a{
+            font-size: 20px;
+            text-decoration: none; 
+            color: rgb(29, 22, 22); 
+           
+        }
+        
+        .navbar ul li{
+            margin: 0;
+            display: inline-block;
+            width: 10%;
+            height: 100%;
+            text-align: center;
+            background-color:rgb(162, 221, 162);
+        }
+
+        .navbar ul li:hover {
+            background-color: rgba(186, 190, 186, 0.842)
+        }
+
+        .container {
+            position: absolute;
+            left: 5%;
+            width: 90%;
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <h2><a href="{% url 'home' %}">BotM</a></h3>
+        </div>
+        <div class="header_navbar">
+            <nav class="navbar">
+                <ul>
+                    <li class="home"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="bots"><a href="#">Bots</a></li>
+                    {% if request.user.username %}
+                    <li class="username"><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>
+                    {% else %}
+                    <li class="sign_in"><a  href="{% url 'sign_in' %}">Sing in</a></li>
+                    <li class="sign_up"><a  href="{% url 'sign_up' %}">Sing up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        
+    </header>  
+
+    <div class="container">
+        <div class="content">
+            {% block content %}
+            <h>Aun nada xD</h>
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+</html>
