@@ -1,5 +1,10 @@
 {% extends 'bots/base.html' %}
 
 {% block content %}
-<p> Aun nada xD</p>
+
+    {% for bot in bots %}
+        {{bot.title}}
+        {{bot.description}}
+        {{bot.price}}$
+    {% endfor %}
 {% endblock %}

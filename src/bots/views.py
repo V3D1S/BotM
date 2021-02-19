@@ -8,7 +8,14 @@ from .models import Bot
 
 # Create your views here.
 def homeView(request):
-	return render(request, 'bots/index.html')
+	bots = Bot.objects.all()
+	all_bots = []
+	for bot in bots:
+		bot_info = {"title": bot.title, "description": bot.description, "price": bot.price}
+		all_bots.append(bot_info)
+		print(bot.title)
+
+	return render(request, 'bots/index.html', {'bots': bots})
     
 
 def logout(request):
@@ -55,9 +62,9 @@ def sign_up(request):
 
 
 def upload_bot(request):
-	form = UploadBotForm()
+	form = UploadBotForm(request.POST)
 	if request.method == "POST":
-		form = UploadBotForm(request.POST)
+		
 		if form.is_valid():
 			title = form.cleaned_data['title']
 			description = form.cleaned_data['description']
