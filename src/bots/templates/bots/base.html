@@ -86,6 +86,39 @@
 
         }
 
+        .bots_menu {
+            width: 100%;
+            overflow: auto;
+            white-space: nowrap;
+            margin-top: 0;
+
+        }
+        .bots_menu a{
+            text-decoration: none;
+
+        }
+
+        .bot {
+            overflow: hidden;
+            text-overflow:  elipsis;
+            display: inline-block;
+            text-align: center;
+            width: 16%;
+            margin-right: 2%;
+            margin-top: 2%;
+            border-radius: 5%;
+            border: 2px solid rgb(162, 221, 162);
+        }
+
+        .bot_description {
+            word-wrap: break-word;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .bot:hover {
+            box-shadow: 10px 10px 8px #888888;
+        }
         
     </style>
 </head>
@@ -100,6 +133,7 @@
                     <li class="home"><a href="{% url 'home' %}">Home</a></li>
                     <li class="bots"><a href="#">Bots</a></li>
                     {% if request.user.username %}
+                    <li class="upload"><a href="{% url 'upload' %}">Upload</a></li>
                     <li class="username"><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>
                     {% else %}
                     <li class="sign_in"><a  href="{% url 'sign_in' %}">Sing in</a></li>

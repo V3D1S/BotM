@@ -20,7 +20,7 @@ def homeView(request):
 
 def logout(request):
 	do_logout(request)
-	return render(request, 'bots/index.html')
+	return redirect('/')
 	
 
 
