@@ -4,11 +4,12 @@
 	<h2 style="margin-bottom: 0;">Most recent:</h2>
 	<div class="bots_menu">
 	    {% for bot in bots %}
-	    <a href="#">
+	    <a href="{% url 'bot_details' {{bot.id}}">
 	    	<div class="bot">
 				<div class="bot_title"><h4>{{bot.title}}</h4></div>
 		        <div class="bot_description"><p>{{bot.description}}</p></div>
 		        <div class="bot_price"><p><b>{{bot.price}}$</b></p></div>
+		        <div class="bot_author"><p><b>{{bot.author}}</b></p></div>
 		    </div>
 		</a>
 	    {% endfor %}

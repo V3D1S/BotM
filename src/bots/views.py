@@ -11,7 +11,7 @@ def homeView(request):
 	bots = Bot.objects.all()
 	all_bots = []
 	for bot in bots:
-		bot_info = {"title": bot.title, "description": bot.description, "price": bot.price}
+		bot_info = {"title": bot.title, "description": bot.description, "price": bot.price, "author": bot.author, "id": id}
 		all_bots.append(bot_info)
 		print(bot.title)
 
@@ -69,7 +69,7 @@ def upload_bot(request):
 			title = form.cleaned_data['title']
 			description = form.cleaned_data['description']
 			price = form.cleaned_data['price']
-			bot = Bot(title=title, description=description, price=price)
+			bot = Bot(title=title, description=description, price=price, author=request.user.username)
 			bot.save()
 			return redirect('/')
 	else:
@@ -77,3 +77,7 @@ def upload_bot(request):
 
 	return render(request, 'bots/upload.html', {'form': form})
 
+
+def bot_details(request, pk):
+	bot = Bot.objects.get(id=pk)
+	return render(request, 'bots/bot_details.html', {"bot": bot})
