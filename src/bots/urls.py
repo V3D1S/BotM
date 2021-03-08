@@ -7,7 +7,7 @@ urlpatterns = [
     path('logout/', logout, name="logout"),
     path('sign_up/', sign_up, name="sign_up"),
     path('upload/', upload_bot, name="upload"),
-    path('bot/<int:pk>', bot_details, name="bot_details")
+    path('bot/<int:pk>/', bot_details, name="bot_details")
 ]
 
 
