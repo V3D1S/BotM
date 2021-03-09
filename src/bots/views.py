@@ -13,7 +13,6 @@ def homeView(request):
 	for bot in bots:
 		bot_info = {"title": bot.title, "description": bot.description, "price": bot.price, "author": bot.author, "id": id}
 		all_bots.append(bot_info)
-		print(bot.title)
 
 	return render(request, 'bots/index.html', {'bots': bots})
     
