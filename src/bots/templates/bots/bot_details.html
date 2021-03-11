@@ -1,9 +1,9 @@
 {% extends 'bots/base.html' %}
 {% block content %}
-<div class="bot">
-	<div class="bot_title"><h4>{{bot.title}}</h4></div>
-    <div class="bot_description"><p>{{bot.description}}</p></div>
-    <div class="bot_price"><p><b>{{bot.price}}$</b></p></div>
-    <div class="bot_author"><p><b>{{bot.author}}</b></p></div>
+<div class="bot_info">
+	<div id="bot-detailed-title"><h2>{{bot.title}}</h2></div>
+    <div id="bot-detailed-description"><p>{{bot.description}}</p></div>
+    <div id="bot-detailed-price"><p><b>{{bot.price}}$</b></p></div>
+    <div id="bot-detailed-author"><p><b>{{bot.author}}</b></p></div>
 </div>
 {% endblock %}

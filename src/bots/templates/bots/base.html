@@ -91,6 +91,7 @@
             overflow: auto;
             white-space: nowrap;
             margin-top: 0;
+            text-align: center;
 
         }
         .bots_menu a{
@@ -103,21 +104,41 @@
             text-overflow:  elipsis;
             display: inline-block;
             text-align: center;
-            width: 16%;
+            width: 20%;
             margin-right: 2%;
             margin-top: 2%;
             border-radius: 5%;
             border: 2px solid rgb(162, 221, 162);
         }
 
+        .display_bots {
+            width: 100%;
+            margin-top: 0;
+            padding-left: 4%;
+            padding-left: 4%;
+        }
+
         .bot_description {
             word-wrap: break-word;
             width: 80%;
             margin-left: 10%;
+            max-height: 10px;
+            
+        }
+
+        .bot_description p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: elipsis;
+            
         }
 
         .bot:hover {
             box-shadow: 10px 10px 8px #888888;
+        }
+
+        #bot-detailed-title h2{
+            text-transform: uppercase;
         }
         
     </style>
@@ -131,7 +152,7 @@
             <nav class="navbar">
                 <ul>
                     <li class="home"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="bots"><a href="#">Bots</a></li>
+                    <li class="bots"><a href="{% url 'bots' %}">Bots</a></li>
                     {% if request.user.username %}
                     <li class="upload"><a href="{% url 'upload' %}">Upload</a></li>
                     <li class="username"><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>

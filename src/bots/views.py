@@ -6,6 +6,14 @@ from django.contrib.auth import logout as do_logout
 from .forms import UploadBotForm
 from .models import Bot
 
+# Handling functions 
+
+def handle_file(bot):
+	
+
+
+
+
 # Create your views here.
 def homeView(request):
 	bots = Bot.objects.all()
@@ -61,13 +69,13 @@ def sign_up(request):
 
 
 def upload_bot(request):
-	form = UploadBotForm(request.POST)
 	if request.method == "POST":
-		
+		form = UploadBotForm(request.POST, request.FILES)
 		if form.is_valid():
 			title = form.cleaned_data['title']
 			description = form.cleaned_data['description']
 			price = form.cleaned_data['price']
+			handle_file(requests.FILES['file'])
 			bot = Bot(title=title, description=description, price=price, author=request.user.username)
 			bot.save()
 			return redirect('/')
@@ -80,3 +88,10 @@ def upload_bot(request):
 def bot_details(request, pk):
 	bot = Bot.objects.get(id=pk)
 	return render(request, 'bots/bot_details.html', {"bot": bot})
+
+
+def bot_page(request):
+	bots = Bot.objects.all()
+
+
+	return render(request, 'bots/bots.

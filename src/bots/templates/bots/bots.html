@@ -1,0 +1,17 @@
+{% extends 'bots/base.html' %}
+
+{% block content %}
+	<h2 style="margin-bottom: 0;">BOTS</h2>
+	<div class="display_bots">
+	    {% for bot in bots %}
+		    <a href="{{ bot.get_absolute_url }}">
+		    	<div class="bot">
+					<div class="bot_title"><h4>{{bot.title}}</h4></div>
+			        <div class="bot_description"><p>{{bot.description}}</p></div>
+			        <div class="bot_price"><p><b>{{bot.price}}$</b></p></div>
+			        <div class="bot_author"><p><b>{{bot.author}}</b></p></div>
+			    </div>
+			</a>
+	    {% endfor %}
+    </div>
+{% endblock %}
