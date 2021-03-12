@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
 from .forms import UploadBotForm
 from .models import Bot
 
+
 # Handling functions 
 
-def handle_file(bot):
 	
 
 
@@ -94,4 +95,14 @@ def bot_page(request):
 	bots = Bot.objects.all()
 
 
-	return render(request, 'bots/bots.
+	return render(request, 'bots/bots.html', {"bots": bots})
+
+
+def profile(request):
+	if request.user.is_authenticated:
+		username = request.user.username
+		password = request.user.password
+
+		print(username, password)
+
+		return redirect('/')

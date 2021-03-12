@@ -29,12 +29,14 @@
         .logo h2 {
             margin-top: 25%;
             margin-bottom: 25%;
+            vertical-align: middle;
             
         }
 
         .logo h2 a {
             text-decoration: none; 
             color: rgb(29, 22, 22);
+            vertical-align: middle;
         }
 
 
@@ -49,12 +51,14 @@
 
         .navbar {
             height: 100%;
+
         }
 
         .navbar ul{
+
             width: 100%;
             text-align: right;
-            padding: 0;
+            
     
     
         }
@@ -72,11 +76,18 @@
             width: 10%;
             height: 100%;
             text-align: center;
-            background-color:rgb(162, 221, 162);
+            
         }
 
         .navbar ul li:hover {
             background-color: rgba(186, 190, 186, 0.842)
+        }
+
+        .navbar ul li.username:hover  {
+            background-color: white;
+        }
+        .navbar ul li a {
+            vertical-align: middle;
         }
 
         .container {
@@ -140,7 +151,17 @@
         #bot-detailed-title h2{
             text-transform: uppercase;
         }
-        
+
+        #profile-image {
+            vertical-align: middle;
+
+            width: 30px;
+            height: 80%;
+            border-radius: 50%;
+
+
+        }
+
     </style>
 </head>
 <body>
@@ -155,7 +176,11 @@
                     <li class="bots"><a href="{% url 'bots' %}">Bots</a></li>
                     {% if request.user.username %}
                     <li class="upload"><a href="{% url 'upload' %}">Upload</a></li>
-                    <li class="username"><a  href="{% url 'logout' %}">{{request.user.username}}</a></li>
+                    <li class="username">
+                        <a  href="{% url 'logout' %}">{{request.user.username}}</a>
+                        {% load static %}
+                        <a href="{% url 'profile_page' %}"><img id="profile-image" src="{% static 'bots/no_profile_image.png' %}" alt="Pofile picture"></a>
+                    </li>
                     {% else %}
                     <li class="sign_in"><a  href="{% url 'sign_in' %}">Sing in</a></li>
                     <li class="sign_up"><a  href="{% url 'sign_up' %}">Sing up</a></li>
