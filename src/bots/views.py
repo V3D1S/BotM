@@ -76,8 +76,8 @@ def upload_bot(request):
 			title = form.cleaned_data['title']
 			description = form.cleaned_data['description']
 			price = form.cleaned_data['price']
-			handle_file(requests.FILES['file'])
-			bot = Bot(title=title, description=description, price=price, author=request.user.username)
+			file = request.FILES['file']
+			bot = Bot(title=title, description=description, price=price, author=request.user.username, file=file)
 			bot.save()
 			return redirect('/')
 	else:
